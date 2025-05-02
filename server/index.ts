@@ -65,11 +65,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     serveStatic(app);
   }
 
-  // Start server
+  // ⛳ Use only PORT from Render; DO NOT use HOST
   const PORT = parseInt(process.env.PORT || "3000", 10);
-  const HOST = process.env.HOST || "0.0.0.0"; // Use "0.0.0.0" on Render
 
-  server.listen(PORT, HOST, () => {
-    console.log(`✅ Server is running on http://${HOST}:${PORT}`);
+  server.listen(PORT, () => {
+    console.log(`✅ Server is running on port ${PORT}`);
   });
-})(); // <-- This closing bracket and parentheses were missing
+})();
